@@ -10,7 +10,13 @@ function App() {
   const [nome, setNome] = useState("");
   const [idade, setIdade] = useState("");
   const [escolaridade, setEscolaridade] = useState("");
-  const [profissao, setProfissao] = useState("");
+  // const profissoes = ["Dentista", "Médico", "Advogado"];
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    alert("viado");
+  };
 
   return (
     <div className="main-container">
@@ -23,7 +29,20 @@ function App() {
           value={nome}
           onChange={event => setNome(event.target.value)}
         />
-        <ButtonNext>></ButtonNext>
+        <Title>Qual sua idade?</Title>
+        <InputText
+          value={idade}
+          onChange={event => setIdade(event.target.value)}
+        />
+        <Title>Qual sua escolaridade?</Title>
+        <InputText
+          value={escolaridade}
+          onChange={event => setEscolaridade(event.target.value)}
+        />
+
+        <ButtonNext type="submit" onClick={event => handleSubmit(event)}>
+          >
+        </ButtonNext>
       </Container>
     </div>
   );
