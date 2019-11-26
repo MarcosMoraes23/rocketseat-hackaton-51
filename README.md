@@ -12,4 +12,9 @@ $ npm install -g json-server
 $ json-server --watch db.json
 ```
 
+# Start other port 
+```sh
+$ json-server -p 4000 db.json
+```
+
 
