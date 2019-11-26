@@ -1,0 +1,19 @@
+{
+	"cursos": [{
+			"id": 1,
+			"title": "Direito"
+		},
+		{
+			"id": 2,
+			"title": "Jornalista"
+		},
+		{
+			"id": 3,
+			"title": "Medicina"
+		}
+	],
+	"usuarios": [{
+		"id": 1,
+		"username": "jose"
+	}]
+}
