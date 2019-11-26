@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
 
-  const [form, setForm] = useState({nome: '', idade: '', escolaridade: ''});
+  const [form, setForm] = useState({ nome: '', idade: '', escolaridade: '' });
   const [numeroPergunta, setNumeroPergunta] = useState(0);
   const questoes = ["Qual seu Nome?", "Qual sua Idade?", "Qual sua Escolaridade?"];
 
@@ -22,10 +22,14 @@ function App() {
   const getInputQuestao = () => {
     return (
       <>
-        <Title>
-          {questoes[numeroPergunta]}
-        </Title>
-        <InputText value={Object.keys(form)[numeroPergunta].value} onChange={(event) => handleChange(Object.keys(form)[numeroPergunta])(event)} />
+        {numeroPergunta < questoes.length ? (
+          <>
+            <Title>
+              {questoes[numeroPergunta]}
+            </Title>
+            <InputText value={Object.keys(form)[numeroPergunta].value} onChange={(event) => handleChange(Object.keys(form)[numeroPergunta])(event)} />
+          </>
+        ) : <h1>Ja deu</h1>}
       </>
     );
   }
@@ -38,9 +42,9 @@ function App() {
           >
         </ButtonNext>
         {form.nome}
-        <br/>
+        <br />
         {form.idade}
-        <br/>
+        <br />
         {form.escolaridade}
       </Container>
     </div>
