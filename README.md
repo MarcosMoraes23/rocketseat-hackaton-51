@@ -1,1 +1,2 @@
-# rocketseat-hackaton-51
+# Hackaton Rocket Seat - Team - 51
+  Concept project as a solution for hackaton main idea.
