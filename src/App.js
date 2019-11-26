@@ -1,48 +1,47 @@
-import React, { useState } from "react";
-import { Title } from "./components/Title/TitleStyle";
-import { Container } from "./components/Container/ContainerStyle";
-import { InputText } from "./components/InputText/InputTextStyle";
-import { ButtonNext } from "./components/ButtonNext/ButtonNextStyle";
-import { HeaderStyle } from "./components/Header/HeaderStyle";
-import "./App.css";
+import React, { useState } from 'react';
+import { Title } from './components/Title/TitleStyle';
+import { Container } from './components/Container/ContainerStyle';
+import { InputText } from './components/InputText/InputTextStyle';
+import { ButtonNext } from './components/ButtonNext/ButtonNextStyle';
+import './App.css';
 
 function App() {
-  const [nome, setNome] = useState("");
-  const [idade, setIdade] = useState("");
-  const [escolaridade, setEscolaridade] = useState("");
-  // const profissoes = ["Dentista", "Médico", "Advogado"];
 
-  const handleSubmit = event => {
-    event.preventDefault();
+  const [form, setForm] = useState({nome: '', idade: '', escolaridade: ''});
+  const [numeroPergunta, setNumeroPergunta] = useState(0);
+  const questoes = ["Qual seu Nome?", "Qual sua Idade?", "Qual sua Escolaridade?"];
 
-    alert("viado");
-  };
+
+  const handleChange = field => (event) => {
+    setForm({
+      ...form,
+      [field]: event.target.value
+    });
+  }
+
+  const getInputQuestao = () => {
+    return (
+      <>
+        <Title>
+          {questoes[numeroPergunta]}
+        </Title>
+        <InputText value={Object.keys(form)[numeroPergunta].value} onChange={(event) => handleChange(Object.keys(form)[numeroPergunta])(event)} />
+      </>
+    );
+  }
 
   return (
     <div className="main-container">
-      <HeaderStyle>
-        <Title>Minha Carreira Tech</Title>
-      </HeaderStyle>
       <Container>
-        <Title>Qual seu nome?</Title>
-        <InputText
-          value={nome}
-          onChange={event => setNome(event.target.value)}
-        />
-        <Title>Qual sua idade?</Title>
-        <InputText
-          value={idade}
-          onChange={event => setIdade(event.target.value)}
-        />
-        <Title>Qual sua escolaridade?</Title>
-        <InputText
-          value={escolaridade}
-          onChange={event => setEscolaridade(event.target.value)}
-        />
-
-        <ButtonNext type="submit" onClick={event => handleSubmit(event)}>
+        {getInputQuestao()}
+        <ButtonNext type="submit" onClick={() => setNumeroPergunta(numeroPergunta + 1)}>
           >
         </ButtonNext>
+        {form.nome}
+        <br/>
+        {form.idade}
+        <br/>
+        {form.escolaridade}
       </Container>
     </div>
   );
